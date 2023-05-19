@@ -1,4 +1,4 @@
-package com.reem.movies.ui.notifications
+package com.reem.movies.app.ui.favorites
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

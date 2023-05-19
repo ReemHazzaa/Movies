@@ -1,4 +1,4 @@
-package com.reem.movies.ui.dashboard
+package com.reem.movies.app.ui.topRated
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

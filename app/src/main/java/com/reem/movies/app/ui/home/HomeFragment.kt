@@ -1,4 +1,4 @@
-package com.reem.movies.ui.home
+package com.reem.movies.app.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
