@@ -22,11 +22,11 @@ class MoviesRepoImpl @Inject constructor(
         moviezApiService.getTopRated(page)
 
     override suspend fun getPopular(page: Int): MovieListResponse {
-        TODO("Not yet implemented")
+        return moviezApiService.getPopular(page)
     }
 
     override suspend fun getUpcoming(page: Int): MovieListResponse {
-        TODO("Not yet implemented")
+        return moviezApiService.getUpcoming(page)
     }
 
     override suspend fun getNowPlaying(page: Int): MovieListResponse =
@@ -42,23 +42,23 @@ class MoviesRepoImpl @Inject constructor(
     ): MovieListResponse = moviezApiService.searchMovieByName(page, includeAdult, movieName)
 
     override suspend fun getGenres(): GenreListResponse {
-        TODO("Not yet implemented")
+        return moviezApiService.getGenres()
     }
 
     override suspend fun getMoviesOfSpecificGenre(genreId: Int): MovieListResponse {
-        TODO("Not yet implemented")
+        return moviezApiService.getMoviesOfGenre(genreId)
     }
 
     override suspend fun getAllCacheMovies(): LiveData<List<MovieUiItem>> {
-        TODO("Not yet implemented")
+        return cacheDao.getAllCachedMovies()
     }
 
     override suspend fun insertCacheItem(item: MovieUiItem) {
-        TODO("Not yet implemented")
+        cacheDao.insertMovieItem(item)
     }
 
     override suspend fun deleteCacheItem(item: MovieUiItem) {
-        TODO("Not yet implemented")
+        cacheDao.deleteMovieItem(item)
     }
 
     override suspend fun getAllFavMovies(): LiveData<List<FavMovieItem>> = favDao.getAllFav()

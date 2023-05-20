@@ -12,7 +12,7 @@ class RemoveItemFromFavUseCase @Inject constructor(private val moviezRepo: Movie
         val favMovieItem: FavMovieItem
     )
 
-    override suspend fun execute(params: Params): Any {
+    override suspend fun execute(params: Params?): Any {
         return moviezRepo.deleteFavItem(params.favMovieItem)
     }
 }

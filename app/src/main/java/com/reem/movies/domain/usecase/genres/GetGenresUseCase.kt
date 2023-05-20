@@ -8,7 +8,7 @@ import javax.inject.Inject
 class GetGenresUseCase @Inject constructor(private val moviezRepo: MoviesRepo) :
     BaseUseCase<Any, List<GenreUiItem>>() {
 
-    override suspend fun execute(params: Any): List<GenreUiItem> {
+    override suspend fun execute(params: Any?): List<GenreUiItem> {
         val result = moviezRepo.getGenres()
         return result.genres.mapIndexed { index, genre ->
             GenreUiItem(genre.name)

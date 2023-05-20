@@ -13,8 +13,8 @@ class GetMovieDetailsUseCase @Inject constructor(private val moviezRepo: MoviesR
         val movieId: Int
     )
 
-    override suspend fun execute(params: Params): MovieDetailsUiItem {
-        val result = moviezRepo.getMovieDetails(params.movieId)
+    override suspend fun execute(params: Params?): MovieDetailsUiItem {
+        val result = moviezRepo.getMovieDetails(params!!.movieId)
         return MovieDetailsUiItem(
             id = result.id,
             title = result.title,

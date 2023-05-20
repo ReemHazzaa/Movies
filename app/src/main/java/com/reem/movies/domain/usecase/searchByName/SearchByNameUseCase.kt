@@ -14,9 +14,9 @@ class SearchByNameUseCase @Inject constructor(private val moviezRepo: MoviesRepo
         val movieName: String
     )
 
-    override suspend fun execute(params: Params): List<SearchUiItem> {
+    override suspend fun execute(params: Params?): List<SearchUiItem> {
         val result =
-            moviezRepo.searchMovieByName(params.page, params.includeAdult, params.movieName)
+            moviezRepo.searchMovieByName(params!!.page, params.includeAdult, params.movieName)
         return result.results.map { item ->
             SearchUiItem(item.id, item.title, item.poster_path, item.vote_average.toString())
         }

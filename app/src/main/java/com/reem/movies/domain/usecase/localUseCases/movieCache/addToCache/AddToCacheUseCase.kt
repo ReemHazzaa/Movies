@@ -12,7 +12,7 @@ class AddToCacheUseCase @Inject constructor(private val moviezRepo: MoviesRepo) 
         val movieUiItem: MovieUiItem
     )
 
-    override suspend fun execute(params: Params): Any {
-        return moviezRepo.insertCacheItem(params.movieUiItem)
+    override suspend fun execute(params: Params?): Any {
+        return moviezRepo.insertCacheItem(params!!.movieUiItem)
     }
 }

@@ -12,8 +12,8 @@ class GetMoviesOfGenreUseCase @Inject constructor(private val moviezRepo: Movies
         val genreId: Int
     )
 
-    override suspend fun execute(params: Params): List<MovieUiItem> {
-        val result = moviezRepo.getMoviesOfSpecificGenre(params.genreId)
+    override suspend fun execute(params: Params?): List<MovieUiItem> {
+        val result = moviezRepo.getMoviesOfSpecificGenre(params!!.genreId)
         return result.results.mapIndexed { index, movie ->
             MovieUiItem(movie.id, movie.title, movie.poster_path, movie.vote_average.toString())
         }

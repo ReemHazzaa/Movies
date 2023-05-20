@@ -9,7 +9,7 @@ import javax.inject.Inject
 class ReadAllFromFavUseCase @Inject constructor(private val moviezRepo: MoviesRepo) :
     BaseUseCase<Any, LiveData<List<FavMovieItem>>>() {
 
-    override suspend fun execute(params: Any): LiveData<List<FavMovieItem>> {
+    override suspend fun execute(params: Any?): LiveData<List<FavMovieItem>> {
         return moviezRepo.getAllFavMovies()
     }
 }

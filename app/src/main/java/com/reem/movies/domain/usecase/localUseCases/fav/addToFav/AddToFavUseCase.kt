@@ -12,7 +12,7 @@ class AddToFavUseCase @Inject constructor(private val moviezRepo: MoviesRepo) :
         val favMovieItem: FavMovieItem
     )
 
-    override suspend fun execute(params: Params): Any {
-        return moviezRepo.insertFavItem(params.favMovieItem)
+    override suspend fun execute(params: Params?): Any {
+        return moviezRepo.insertFavItem(params!!.favMovieItem)
     }
 }
