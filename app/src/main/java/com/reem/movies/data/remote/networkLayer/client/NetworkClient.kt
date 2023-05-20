@@ -1,4 +1,4 @@
-package com.example.moviez.data.remote.networkLayer.client
+package com.reem.movies.data.remote.networkLayer.client
 
 import retrofit2.Retrofit
 

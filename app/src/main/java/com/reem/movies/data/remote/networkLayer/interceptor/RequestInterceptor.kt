@@ -6,7 +6,7 @@ import okhttp3.Request
 import okhttp3.Response
 
 /**
- * Interceptor is to add API key to all API requests.
+ * RequestInterceptor is to add API key to all API requests.
  */
 class RequestInterceptor : Interceptor {
 
