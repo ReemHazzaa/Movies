@@ -1,5 +1,6 @@
 package com.reem.movies.data.remote.apiService
 
+import com.reem.movies.domain.entity.genreList.GenreListResponse
 import com.reem.movies.domain.entity.movieDetails.MovieDetailsResponse
 import com.reem.movies.domain.entity.movieList.MovieListResponse
 import retrofit2.http.GET
@@ -27,5 +28,22 @@ interface MoviesApiService {
         @Query("page") page: Int,
         @Query("include_adult") includeAdult: Boolean = false,
         @Query("query") query: String
+    ): MovieListResponse
+
+    @GET("movie/popular")
+    suspend fun getPopular(
+        @Query("page") page: Int
+    ): MovieListResponse
+
+    @GET("movie/upcoming")
+    suspend fun getUpcoming(
+        @Query("page") page: Int
+    ): MovieListResponse
+
+    @GET("genre/movie/list")
+    suspend fun getGenres(): GenreListResponse
+
+    suspend fun getMoviesOfGenre(
+        @Query("with_genres") withGenres: Int
     ): MovieListResponse
 }
