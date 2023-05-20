@@ -1,6 +1,6 @@
-package com.example.moviez.app.di
+package com.reem.movies.app.di
 
-import com.example.moviez.data.remote.networkLayer.client.MoviezClient
+import com.reem.movies.data.remote.networkLayer.client.MoviesClient
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,8 +14,8 @@ object NetworkClientsModule {
 
     @Provides
     @Singleton
-    fun provideMoviezNetworkClient(retrofitBuilder: Retrofit.Builder): MoviezClient {
-        return MoviezClient(retrofitBuilder)
+    fun provideMoviezNetworkClient(retrofitBuilder: Retrofit.Builder): MoviesClient {
+        return MoviesClient(retrofitBuilder)
     }
 
 }
