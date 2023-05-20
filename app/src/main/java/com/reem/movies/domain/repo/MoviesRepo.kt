@@ -9,15 +9,10 @@ import com.reem.movies.domain.entity.movieList.MovieListResponse
 
 interface MoviesRepo {
     suspend fun getTopRated(page: Int): MovieListResponse
-
     suspend fun getPopular(page: Int): MovieListResponse
-
     suspend fun getUpcoming(page: Int): MovieListResponse
-
     suspend fun getNowPlaying(page: Int): MovieListResponse
-
     suspend fun getMovieDetails(movieId: Int): MovieDetailsResponse
-
     suspend fun searchMovieByName(
         page: Int,
         includeAdult: Boolean,
@@ -25,17 +20,16 @@ interface MoviesRepo {
     ): MovieListResponse
 
     suspend fun getGenres(): GenreListResponse
-
     suspend fun getMoviesOfSpecificGenre(genreId: Int): MovieListResponse
 
     // LOCAL
     // 1. CACHE
-    suspend fun getAllCacheMovies() : LiveData<List<MovieUiItem>>
+    suspend fun getAllCacheMovies(): LiveData<List<MovieUiItem>>
     suspend fun insertCacheItem(item: MovieUiItem)
     suspend fun deleteCacheItem(item: MovieUiItem)
 
     // 2. FAV
-    suspend fun getAllFavMovies() : LiveData<List<FavMovieItem>>
+    suspend fun getAllFavMovies(): LiveData<List<FavMovieItem>>
     suspend fun insertFavItem(item: FavMovieItem)
     suspend fun deleteFavItem(item: FavMovieItem)
 
