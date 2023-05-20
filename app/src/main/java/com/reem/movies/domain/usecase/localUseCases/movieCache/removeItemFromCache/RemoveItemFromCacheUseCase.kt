@@ -13,6 +13,6 @@ class RemoveItemFromCacheUseCase @Inject constructor(private val moviezRepo: Mov
     )
 
     override suspend fun execute(params: Params?): Any {
-        return moviezRepo.deleteCacheItem(params.movieUiItem)
+        return moviezRepo.deleteCacheItem(params!!.movieUiItem)
     }
 }
