@@ -6,7 +6,7 @@
 
     <string name="no_connection">No internet connection</string>
     <string name="try_again">Please try again</string>
-    <string name="what_are_you_looking_for">What are you looking for?</string>
+    <string name="what_are_you_looking_for">All you need about movies</string>
     <string name="search_movies">Search movies</string>
     <string name="now_playing">Now playing</string>
     <string name="search">Search</string>
@@ -15,4 +15,6 @@
     <string name="in_fav">In favorites</string>
     <string name="empty_favorites">Empty favorites</string>
     <string name="empty">Empty</string>
+    <string name="popular">Popular</string>
+    <string name="upcoming">Upcoming</string>
 </resources>
