@@ -2,7 +2,7 @@ package com.reem.movies.domain.repo
 
 import androidx.lifecycle.LiveData
 import com.reem.movies.app.entity.favMovie.FavMovieItem
-import com.reem.movies.app.entity.movie.MovieUiItem
+import com.reem.movies.app.ui.home.entity.movie.MovieUiItem
 import com.reem.movies.domain.entity.genreList.GenreListResponse
 import com.reem.movies.domain.entity.movieDetails.MovieDetailsResponse
 import com.reem.movies.domain.entity.movieList.MovieListResponse

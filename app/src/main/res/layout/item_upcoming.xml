@@ -6,12 +6,15 @@
     <data>
 
         <import type="android.view.View" />
+        <variable
+            name="item"
+            type="com.reem.movies.app.ui.home.entity.upcoming.UpcomingUiItem" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="150dp"
-        android:layout_height="200dp"
+        android:layout_height="match_parent"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="5dp"
         android:background="@drawable/rect_curved"
@@ -24,6 +27,7 @@
             android:layout_height="0dp"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
+            loadImageWithGlide="@{item.imageUrl}"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +60,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginBottom="10dp"
                 android:layout_weight="3"
+                android:text="@{item.title}"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -68,6 +73,7 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="2"
+                android:text="@{item.voteAvg}"
                 android:drawableStart="@drawable/round_star_24"
                 android:drawableTint="@color/primaryDarkColor"
                 android:textAlignment="center"

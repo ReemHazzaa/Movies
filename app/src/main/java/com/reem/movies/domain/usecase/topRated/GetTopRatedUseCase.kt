@@ -1,6 +1,6 @@
 package com.reem.movies.domain.usecase.topRated
 
-import com.reem.movies.app.entity.movie.MovieUiItem
+import com.reem.movies.app.ui.home.entity.movie.MovieUiItem
 import com.reem.movies.domain.repo.MoviesRepo
 import com.reem.movies.domain.usecase.baseUseCase.BaseUseCase
 import javax.inject.Inject

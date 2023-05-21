@@ -1,4 +1,4 @@
-package com.reem.movies.app.binding
+package com.reem.movies.app.binding.bindingAdapter
 
 import android.util.Log
 import android.widget.ImageView

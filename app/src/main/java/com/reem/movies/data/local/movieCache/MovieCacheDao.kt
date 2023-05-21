@@ -3,7 +3,7 @@ package com.reem.movies.data.local.movieCache
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.reem.movies.app.base.Constants.TABLE_MOVIES_CACHED
-import com.reem.movies.app.entity.movie.MovieUiItem
+import com.reem.movies.app.ui.home.entity.movie.MovieUiItem
 
 @Dao
 interface MovieCacheDao {

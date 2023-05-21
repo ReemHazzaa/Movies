@@ -4,7 +4,9 @@ import androidx.lifecycle.viewModelScope
 import com.reem.movies.app.base.baseUi.BaseViewModel
 import com.reem.movies.app.base.liveDataUtils.ObserveOnceLiveData
 import com.reem.movies.app.entity.genre.GenreUiItem
-import com.reem.movies.app.entity.movie.MovieUiItem
+import com.reem.movies.app.ui.home.entity.nowPlaying.NowPlayingUiItem
+import com.reem.movies.app.ui.home.entity.popular.PopularUiItem
+import com.reem.movies.app.ui.home.entity.upcoming.UpcomingUiItem
 import com.reem.movies.domain.usecase.genres.GetGenresUseCase
 import com.reem.movies.domain.usecase.nowPlaying.GetNowPlayingUseCase
 import com.reem.movies.domain.usecase.popular.GetPopularUseCase
@@ -22,10 +24,10 @@ class HomeViewModel @Inject constructor(
 ) :
     BaseViewModel() {
 
-    val popularLiveData = ObserveOnceLiveData<List<MovieUiItem>>()
+    val popularLiveData = ObserveOnceLiveData<List<PopularUiItem>>()
     val genresLiveData = ObserveOnceLiveData<List<GenreUiItem>>()
-    val upcomingLiveData = ObserveOnceLiveData<List<MovieUiItem>>()
-    val nowPlayingLiveData = ObserveOnceLiveData<List<MovieUiItem>>()
+    val upcomingLiveData = ObserveOnceLiveData<List<UpcomingUiItem>>()
+    val nowPlayingLiveData = ObserveOnceLiveData<List<NowPlayingUiItem>>()
 
     fun getPopular(page: Int) {
         viewModelScope.launch(getExceptionHandler()) {

@@ -1,4 +1,4 @@
-package com.reem.movies.app.entity.movie
+package com.reem.movies.app.ui.home.entity.movie
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
