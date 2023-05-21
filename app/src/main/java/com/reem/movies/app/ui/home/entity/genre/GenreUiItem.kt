@@ -1,4 +1,4 @@
-package com.reem.movies.app.entity.genre
+package com.reem.movies.app.ui.home.entity.genre
 
 import androidx.databinding.library.baseAdapters.BR
 import com.reem.movies.R

@@ -1,6 +1,6 @@
 package com.reem.movies.app.entity.movieDetails
 
-import com.reem.movies.app.entity.genre.GenreUiItem
+import com.reem.movies.app.ui.home.entity.genre.GenreUiItem
 
 
 data class MovieDetailsUiItem(

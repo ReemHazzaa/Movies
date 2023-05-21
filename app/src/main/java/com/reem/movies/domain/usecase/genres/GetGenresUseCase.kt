@@ -1,6 +1,6 @@
 package com.reem.movies.domain.usecase.genres
 
-import com.reem.movies.app.entity.genre.GenreUiItem
+import com.reem.movies.app.ui.home.entity.genre.GenreUiItem
 import com.reem.movies.domain.repo.MoviesRepo
 import com.reem.movies.domain.usecase.baseUseCase.BaseUseCase
 import javax.inject.Inject

@@ -10,7 +10,7 @@ import com.reem.movies.app.base.baseUi.BaseFragment
 import com.reem.movies.app.binding.genericadapter.Listable
 import com.reem.movies.app.binding.genericadapter.adapter.GeneralListAdapter
 import com.reem.movies.app.binding.genericadapter.listener.OnItemClickCallback
-import com.reem.movies.app.entity.genre.GenreUiItem
+import com.reem.movies.app.ui.home.entity.genre.GenreUiItem
 import com.reem.movies.app.extensions.updateStatusBarColor
 import com.reem.movies.app.ui.home.entity.nowPlaying.NowPlayingUiItem
 import com.reem.movies.app.ui.home.entity.popular.PopularUiItem

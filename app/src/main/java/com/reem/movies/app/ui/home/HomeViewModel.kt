@@ -3,7 +3,7 @@ package com.reem.movies.app.ui.home
 import androidx.lifecycle.viewModelScope
 import com.reem.movies.app.base.baseUi.BaseViewModel
 import com.reem.movies.app.base.liveDataUtils.ObserveOnceLiveData
-import com.reem.movies.app.entity.genre.GenreUiItem
+import com.reem.movies.app.ui.home.entity.genre.GenreUiItem
 import com.reem.movies.app.ui.home.entity.nowPlaying.NowPlayingUiItem
 import com.reem.movies.app.ui.home.entity.popular.PopularUiItem
 import com.reem.movies.app.ui.home.entity.upcoming.UpcomingUiItem

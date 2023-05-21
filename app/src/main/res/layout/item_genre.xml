@@ -8,7 +8,7 @@
 
         <variable
             name="item"
-            type="com.reem.movies.app.entity.genre.GenreUiItem" />
+            type="com.reem.movies.app.ui.home.entity.genre.GenreUiItem" />
 
     </data>
 
