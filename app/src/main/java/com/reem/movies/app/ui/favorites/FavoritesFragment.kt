@@ -1,42 +1,38 @@
 package com.reem.movies.app.ui.favorites
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.databinding.library.baseAdapters.BR
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import com.reem.movies.R
+import com.reem.movies.app.base.baseUi.BaseFragment
+import com.reem.movies.app.extensions.updateStatusBarColor
+import com.reem.movies.app.ui.favorites.adapter.FavAdapter
 import com.reem.movies.databinding.FragmentFavoritesBinding
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
-class FavoritesFragment : Fragment() {
+@AndroidEntryPoint
+class FavoritesFragment : BaseFragment<FavViewModel, FragmentFavoritesBinding>() {
 
-    private var _binding: FragmentFavoritesBinding? = null
+    override val layoutResId: Int = R.layout.fragment_favorites
+    override val mViewModel: FavViewModel by viewModels()
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val favAdapter = FavAdapter()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
-
-        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.tvHeader
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().updateStatusBarColor(R.color.grey_E3E2E5, false)
+        viewDataBinding.apply {
+            setVariable(BR.viewModel, mViewModel)
         }
-        return root
-    }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+        lifecycleScope.launch(mViewModel.getExceptionHandler()) {
+            mViewModel.readAllFav().observe(viewLifecycleOwner) { fav ->
+                favAdapter.setData(fav)
+                viewDataBinding.rvResult.adapter = favAdapter
+            }
+        }
     }
 }
