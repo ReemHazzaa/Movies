@@ -1,4 +1,4 @@
-package com.reem.movies.data.repo
+package com.reem.movies.domain.repo
 
 import androidx.lifecycle.LiveData
 import com.reem.movies.app.entity.favMovie.FavMovieItem
