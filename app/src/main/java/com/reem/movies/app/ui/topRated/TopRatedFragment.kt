@@ -1,42 +1,59 @@
 package com.reem.movies.app.ui.topRated
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.databinding.library.baseAdapters.BR
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
+import com.reem.movies.R
+import com.reem.movies.app.base.baseUi.BaseFragment
+import com.reem.movies.app.binding.genericadapter.Listable
+import com.reem.movies.app.binding.genericadapter.adapter.GeneralListAdapter
+import com.reem.movies.app.binding.genericadapter.listener.OnItemClickCallback
+import com.reem.movies.app.extensions.updateStatusBarColor
+import com.reem.movies.app.ui.topRated.entity.TopRatedUiItem
 import com.reem.movies.databinding.FragmentTopRatedBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class TopRatedFragment : Fragment() {
+@AndroidEntryPoint
+class TopRatedFragment : BaseFragment<TopRatedViewModel, FragmentTopRatedBinding>() {
+    override val layoutResId: Int = R.layout.fragment_top_rated
+    override val mViewModel: TopRatedViewModel by viewModels()
 
-    private var _binding: FragmentTopRatedBinding? = null
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        getTopRated()
+    }
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        requireActivity().updateStatusBarColor(R.color.grey_E3E2E5)
+        viewDataBinding.apply {
+            setVariable(BR.viewModel, mViewModel)
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            swipeRefresh.setOnRefreshListener {
+                swipeRefresh.isRefreshing = true
+                getTopRated()
+                swipeRefresh.isRefreshing = false
+            }
 
-        _binding = FragmentTopRatedBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.tvHeader
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+            rvResult.adapter =
+                GeneralListAdapter(context = requireContext(), onItemClickCallback = object :
+                    OnItemClickCallback {
+                    override fun onItemClicked(view: View, listableItem: Listable, position: Int) {
+                        val itemId = (listableItem as TopRatedUiItem).id
+                        val action =
+                            TopRatedFragmentDirections.actionNavigationTopRatedToMovieDetailsFragment(
+                                itemId
+                            )
+                        findNavController().navigate(action)
+                    }
+                })
         }
-        return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+    private fun getTopRated() {
+        mViewModel.getTopRated(1)
     }
+
 }

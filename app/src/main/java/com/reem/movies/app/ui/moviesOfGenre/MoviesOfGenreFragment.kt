@@ -37,7 +37,7 @@ class MoviesOfGenreFragment : BaseFragment<MoviesOfGenreViewModel, FragmentMovie
         viewDataBinding.apply {
             setVariable(BR.viewModel, mViewModel)
             mViewModel.genreName.value = args.genreName
-            
+
             swipeRefresh.setOnRefreshListener {
                 swipeRefresh.isRefreshing = true
                 loadMovies(args.genreId)

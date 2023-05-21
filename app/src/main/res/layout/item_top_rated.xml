@@ -7,16 +7,21 @@
 
         <import type="android.view.View" />
 
+        <variable
+            name="item"
+            type="com.reem.movies.app.ui.topRated.entity.TopRatedUiItem" />
+
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="200dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/rect_curved"
         android:backgroundTint="@color/white"
-        android:elevation="10dp">
+        android:elevation="10dp"
+        android:minHeight="200dp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/actionModeSelectionCV"
@@ -31,11 +36,12 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_movie"
+            loadImageWithGlide="@{item.imageUrl}"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/rect_curved_left"
-            android:scaleType="center"
-           app:layout_constraintBottom_toTopOf="@+id/guideline"
+            android:scaleType="fitCenter"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -56,6 +62,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
+            android:text="@{item.title}"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -73,12 +80,13 @@
             android:layout_marginTop="10dp"
             android:layout_marginEnd="10dp"
             android:layout_marginBottom="10dp"
+            android:text="@{item.voteAvg}"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:drawableStartCompat="@drawable/round_star_24"
             app:drawableTint="@color/secondaryDarkColor"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
