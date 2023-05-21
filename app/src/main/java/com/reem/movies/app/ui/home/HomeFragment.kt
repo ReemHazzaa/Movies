@@ -80,9 +80,9 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding>() {
                 GeneralListAdapter(context = requireContext(), onItemClickCallback = object :
                     OnItemClickCallback {
                     override fun onItemClicked(view: View, listableItem: Listable, position: Int) {
-//                        val itemId = (listableItem as GenreUiItem)
-//                        val action = HomeFragmentDirections.actionNavigationHomeToMovieDetailsFragment(itemId)
-//                        findNavController().navigate(action)
+                        val item = (listableItem as GenreUiItem)
+                        val action = HomeFragmentDirections.actionNavigationHomeToMoviesOfGenreFragment(item.id, item.name)
+                        findNavController().navigate(action)
                     }
                 })
 

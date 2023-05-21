@@ -23,7 +23,7 @@ class GetMovieDetailsUseCase @Inject constructor(private val moviezRepo: MoviesR
             voteAvg = result.vote_average?.toString() ?: "",
             voteCount = result.vote_count?.toString() ?: "",
             genres = result.genres.map { item ->
-                GenreUiItem(item.name)
+                GenreUiItem(item.id, item.name)
             }
         )
     }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_navigation_home_to_movieDetailsFragment"
             app:destination="@id/movieDetailsFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_moviesOfGenreFragment"
+            app:destination="@id/moviesOfGenreFragment" />
     </fragment>
 
     <fragment
@@ -42,5 +45,21 @@
         <argument
             android:name="movieID"
             app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/moviesOfGenreFragment"
+        android:name="com.reem.movies.app.ui.moviesOfGenre.MoviesOfGenreFragment"
+        android:label="fragment_movies_of_genre"
+        tools:layout="@layout/fragment_movies_of_genre" >
+        <argument
+            android:name="genreId"
+            app:argType="integer" />
+
+        <action
+            android:id="@+id/action_moviesOfGenreFragment_to_movieDetailsFragment"
+            app:destination="@id/movieDetailsFragment" />
+        <argument
+            android:name="genreName"
+            app:argType="string" />
     </fragment>
 </navigation>

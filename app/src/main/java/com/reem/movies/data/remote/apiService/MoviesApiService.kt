@@ -43,6 +43,7 @@ interface MoviesApiService {
     @GET("genre/movie/list")
     suspend fun getGenres(): GenreListResponse
 
+    @GET("discover/movie")
     suspend fun getMoviesOfGenre(
         @Query("with_genres") withGenres: Int
     ): MovieListResponse
