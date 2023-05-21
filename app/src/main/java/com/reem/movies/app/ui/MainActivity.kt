@@ -1,16 +1,20 @@
 package com.reem.movies.app.ui
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import androidx.work.Constraints
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequest
+import androidx.work.WorkManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.reem.movies.R
 import com.reem.movies.app.base.baseUi.BaseActivity
+import com.reem.movies.data.local.workManager.CachingWorker
 import com.reem.movies.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
+import java.util.concurrent.TimeUnit
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
@@ -32,5 +36,25 @@ class MainActivity : BaseActivity() {
             )
         )
         navView.setupWithNavController(navController)
+
+        invalidateCacheEveryFourHours()
+    }
+
+    private fun invalidateCacheEveryFourHours() {
+        val connectedConstraint = Constraints.Builder().run {
+            NetworkType.CONNECTED
+            build()
+        }
+        val periodicRequest = PeriodicWorkRequest.Builder(
+            CachingWorker::class.java,
+            4,
+            TimeUnit.HOURS,
+            1, TimeUnit.SECONDS
+        )
+            .setConstraints(connectedConstraint)
+            .build()
+        WorkManager
+            .getInstance(this.applicationContext)
+            .enqueue(periodicRequest)
     }
 }

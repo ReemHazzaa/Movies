@@ -15,4 +15,7 @@ interface MovieCacheDao {
 
     @Delete
     suspend fun deleteMovieItem(item: MovieItem)
+
+    @Query("DELETE FROM $TABLE_MOVIES_CACHED")
+    suspend fun deleteCache()
 }
