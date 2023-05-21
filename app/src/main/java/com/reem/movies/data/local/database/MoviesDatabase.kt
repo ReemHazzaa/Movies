@@ -2,7 +2,7 @@ package com.reem.movies.data.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.reem.movies.app.entity.favMovie.FavMovieItem
+import com.reem.movies.app.ui.favorites.entity.FavMovieItem
 import com.reem.movies.app.ui.home.entity.movie.MovieItem
 import com.reem.movies.data.local.fav.FavDao
 import com.reem.movies.data.local.movieCache.MovieCacheDao

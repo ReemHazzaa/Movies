@@ -9,7 +9,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.reem.movies.R
 import com.reem.movies.app.binding.bindingAdapter.ImageBindingAdapter.loadImageFromMovieDBWithGlide
-import com.reem.movies.app.entity.favMovie.FavMovieItem
+import com.reem.movies.app.ui.favorites.entity.FavMovieItem
 import com.reem.movies.app.ui.favorites.FavoritesFragmentDirections
 
 class FavAdapter :

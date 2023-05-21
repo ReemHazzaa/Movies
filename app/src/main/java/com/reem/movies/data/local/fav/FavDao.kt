@@ -3,7 +3,7 @@ package com.reem.movies.data.local.fav
 import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.reem.movies.app.base.Constants.TABLE_MOVIES_FAV
-import com.reem.movies.app.entity.favMovie.FavMovieItem
+import com.reem.movies.app.ui.favorites.entity.FavMovieItem
 
 @Dao
 interface FavDao {

@@ -3,8 +3,8 @@ package com.reem.movies.app.ui.movieDetails
 import androidx.lifecycle.viewModelScope
 import com.reem.movies.app.base.baseUi.BaseViewModel
 import com.reem.movies.app.base.liveDataUtils.ObserveOnceLiveData
-import com.reem.movies.app.entity.favMovie.FavMovieItem
-import com.reem.movies.app.entity.movieDetails.MovieDetailsUiItem
+import com.reem.movies.app.ui.favorites.entity.FavMovieItem
+import com.reem.movies.app.ui.movieDetails.entity.movieDetails.MovieDetailsUiItem
 import com.reem.movies.domain.usecase.localUseCases.fav.addToFav.AddToFavUseCase
 import com.reem.movies.domain.usecase.localUseCases.fav.readAllFromFav.ReadAllFromFavUseCase
 import com.reem.movies.domain.usecase.localUseCases.fav.removeItemFromFav.RemoveItemFromFavUseCase

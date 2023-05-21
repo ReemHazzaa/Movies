@@ -14,7 +14,7 @@ import com.reem.movies.app.base.baseUi.BaseFragment
 import com.reem.movies.app.binding.genericadapter.Listable
 import com.reem.movies.app.binding.genericadapter.adapter.GeneralListAdapter
 import com.reem.movies.app.binding.genericadapter.listener.OnItemClickCallback
-import com.reem.movies.app.entity.favMovie.FavMovieItem
+import com.reem.movies.app.ui.favorites.entity.FavMovieItem
 import com.reem.movies.app.extensions.updateStatusBarColor
 import com.reem.movies.databinding.FragmentMovieDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,4 +1,4 @@
-package com.reem.movies.app.entity.favMovie
+package com.reem.movies.app.ui.favorites.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

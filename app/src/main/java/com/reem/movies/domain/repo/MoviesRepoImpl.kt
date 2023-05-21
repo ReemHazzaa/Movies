@@ -1,7 +1,7 @@
 package com.reem.movies.domain.repo
 
 import androidx.lifecycle.LiveData
-import com.reem.movies.app.entity.favMovie.FavMovieItem
+import com.reem.movies.app.ui.favorites.entity.FavMovieItem
 import com.reem.movies.app.ui.home.entity.movie.MovieItem
 import com.reem.movies.data.local.fav.FavDao
 import com.reem.movies.data.local.movieCache.MovieCacheDao
