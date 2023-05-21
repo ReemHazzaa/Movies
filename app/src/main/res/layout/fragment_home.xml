@@ -49,27 +49,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/searchView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="20dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="@string/search_movies"
-                    android:textAlignment="viewStart"
-                    android:textAllCaps="false"
-                    android:textColor="@color/grey_818181"
-                    android:textSize="14sp"
-                    app:backgroundTint="@color/white"
-                    app:cornerRadius="10dp"
-                    app:icon="@drawable/ic_search"
-                    app:iconTint="@color/grey_818181"
-                    app:layout_constraintBottom_toTopOf="@+id/guideline"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/tv_header"
-                    app:layout_constraintVertical_bias="0.100000024" />
-
                 <androidx.constraintlayout.widget.Guideline
                     android:id="@+id/guideline"
                     android:layout_width="wrap_content"
@@ -103,7 +82,7 @@
                     android:textSize="@dimen/main_rv_header_text_size"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/searchView" />
+                    app:layout_constraintTop_toBottomOf="@+id/tv_header" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rv_popular"

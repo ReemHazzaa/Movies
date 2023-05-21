@@ -4,6 +4,7 @@ import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.reem.movies.R
 import com.reem.movies.app.base.Constants.MOVIE_DB_IMAGE_BASE_URL
 
@@ -19,6 +20,7 @@ object ImageBindingAdapter {
 //                .centerCrop()
                 .error(R.drawable.baseline_error_outline_24)
                 .placeholder(R.drawable.baseline_downloading_24)
+                .diskCacheStrategy(DiskCacheStrategy.DATA)
                 .into(this)
 
         } catch (e: java.lang.Exception) {

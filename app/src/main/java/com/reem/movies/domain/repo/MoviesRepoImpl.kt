@@ -6,7 +6,9 @@ import com.reem.movies.app.ui.home.entity.movie.MovieItem
 import com.reem.movies.data.local.fav.FavDao
 import com.reem.movies.data.local.movieCache.MovieCacheDao
 import com.reem.movies.data.remote.apiService.MoviesApiService
+import com.reem.movies.data.remote.networkLayer.NetworkManager
 import com.reem.movies.domain.entity.genreList.GenreListResponse
+import com.reem.movies.domain.entity.movie.Movie
 import com.reem.movies.domain.entity.movieDetails.MovieDetailsResponse
 import com.reem.movies.domain.entity.movieList.MovieListResponse
 import javax.inject.Inject
@@ -14,14 +16,48 @@ import javax.inject.Inject
 class MoviesRepoImpl @Inject constructor(
     private val moviezApiService: MoviesApiService,
     private val cacheDao: MovieCacheDao,
-    private val favDao: FavDao
+    private val favDao: FavDao,
+    private val networkManager: NetworkManager
 ) :
     MoviesRepo {
     override suspend fun getTopRated(page: Int): MovieListResponse =
         moviezApiService.getTopRated(page)
 
     override suspend fun getPopular(page: Int): MovieListResponse {
-        return moviezApiService.getPopular(page)
+        lateinit var moviesResponse: MovieListResponse
+        val cachedPopular = cacheDao.getAllCachedMovies()
+        if (cachedPopular.value?.isNotEmpty() == true) {
+            moviesResponse = mapCachedMoviesListToResponse(cachedPopular.value!!)
+            return moviesResponse
+        }
+        if (cachedPopular.value.isNullOrEmpty() && networkManager.isNetworkAvailable()) {
+            moviesResponse = moviezApiService.getPopular(page)
+            cachePopularMovies(moviesResponse)
+        }
+        return moviesResponse
+    }
+
+    private suspend fun cachePopularMovies(moviesResponse: MovieListResponse) {
+        moviesResponse.results.map { movie ->
+            MovieItem(
+                movie.id, movie.title, movie.poster_path, movie.vote_average.toString()
+            )
+        }.onEach { movieItem ->
+            cacheDao.insertMovieItem(movieItem)
+        }
+    }
+
+    private fun mapCachedMoviesListToResponse(value: List<MovieItem>): MovieListResponse {
+        return MovieListResponse(
+            results = value.mapIndexed { index, movieItem ->
+                Movie(
+                    id = movieItem.id,
+                    title = movieItem.title,
+                    poster_path = movieItem.imageUrl,
+                    vote_average = movieItem.voteAvg.toDoubleOrNull() ?: 0.0
+                )
+            }
+        )
     }
 
     override suspend fun getUpcoming(page: Int): MovieListResponse {

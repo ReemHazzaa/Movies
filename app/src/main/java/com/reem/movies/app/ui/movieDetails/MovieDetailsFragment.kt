@@ -15,7 +15,6 @@ import com.reem.movies.app.binding.genericadapter.Listable
 import com.reem.movies.app.binding.genericadapter.adapter.GeneralListAdapter
 import com.reem.movies.app.binding.genericadapter.listener.OnItemClickCallback
 import com.reem.movies.app.ui.favorites.entity.FavMovieItem
-import com.reem.movies.app.extensions.updateStatusBarColor
 import com.reem.movies.databinding.FragmentMovieDetailsBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -38,7 +37,7 @@ class MovieDetailsFragment : BaseFragment<MovieDetailsViewModel, FragmentMovieDe
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().updateStatusBarColor(R.color.grey_E3E2E5, false)
+
         viewDataBinding.apply {
             setVariable(BR.viewModel, mViewModel)
 

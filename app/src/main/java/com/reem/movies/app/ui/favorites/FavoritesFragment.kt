@@ -7,7 +7,6 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.reem.movies.R
 import com.reem.movies.app.base.baseUi.BaseFragment
-import com.reem.movies.app.extensions.updateStatusBarColor
 import com.reem.movies.app.ui.favorites.adapter.FavAdapter
 import com.reem.movies.databinding.FragmentFavoritesBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,7 +22,7 @@ class FavoritesFragment : BaseFragment<FavViewModel, FragmentFavoritesBinding>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().updateStatusBarColor(R.color.grey_E3E2E5, false)
+
         viewDataBinding.apply {
             setVariable(BR.viewModel, mViewModel)
         }

@@ -8,6 +8,7 @@ import com.reem.movies.app.ui.home.entity.nowPlaying.NowPlayingUiItem
 import com.reem.movies.app.ui.home.entity.popular.PopularUiItem
 import com.reem.movies.app.ui.home.entity.upcoming.UpcomingUiItem
 import com.reem.movies.domain.usecase.genres.GetGenresUseCase
+import com.reem.movies.domain.usecase.localUseCases.movieCache.readAllFromCache.ReadAllFromCacheUseCase
 import com.reem.movies.domain.usecase.nowPlaying.GetNowPlayingUseCase
 import com.reem.movies.domain.usecase.popular.GetPopularUseCase
 import com.reem.movies.domain.usecase.upcoming.GetUpcomingUseCase
@@ -20,7 +21,8 @@ class HomeViewModel @Inject constructor(
     private val popularUseCase: GetPopularUseCase,
     private val genresUseCase: GetGenresUseCase,
     private val upcomingUseCase: GetUpcomingUseCase,
-    private val nowPlayingUseCase: GetNowPlayingUseCase
+    private val nowPlayingUseCase: GetNowPlayingUseCase,
+    private val readAllFromCacheUseCase: ReadAllFromCacheUseCase
 ) :
     BaseViewModel() {
 
@@ -29,7 +31,7 @@ class HomeViewModel @Inject constructor(
     val upcomingLiveData = ObserveOnceLiveData<List<UpcomingUiItem>>()
     val nowPlayingLiveData = ObserveOnceLiveData<List<NowPlayingUiItem>>()
 
-    fun getPopular(page: Int) {
+    suspend fun getPopular(page: Int) {
         viewModelScope.launch(getExceptionHandler()) {
             showProgress()
             popularLiveData.value = popularUseCase.execute(GetPopularUseCase.Params(page))
@@ -37,6 +39,7 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    suspend fun readCachedPopular() = readAllFromCacheUseCase.execute(null)
     fun getGenres() {
         viewModelScope.launch(getExceptionHandler()) {
             showProgress()

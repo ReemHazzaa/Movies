@@ -23,6 +23,7 @@ interface MoviesApiService {
         @Path("movie_id") movieId: Int
     ): MovieDetailsResponse
 
+    // POV
     @GET("search/movie")
     suspend fun searchMovieByName(
         @Query("page") page: Int,

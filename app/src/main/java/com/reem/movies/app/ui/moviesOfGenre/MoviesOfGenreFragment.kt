@@ -1,7 +1,6 @@
 package com.reem.movies.app.ui.moviesOfGenre
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.databinding.library.baseAdapters.BR
 import androidx.fragment.app.viewModels
@@ -12,7 +11,6 @@ import com.reem.movies.app.base.baseUi.BaseFragment
 import com.reem.movies.app.binding.genericadapter.Listable
 import com.reem.movies.app.binding.genericadapter.adapter.GeneralListAdapter
 import com.reem.movies.app.binding.genericadapter.listener.OnItemClickCallback
-import com.reem.movies.app.extensions.updateStatusBarColor
 import com.reem.movies.app.ui.moviesOfGenre.entity.GenreMovieUiItem
 import com.reem.movies.databinding.FragmentMoviesOfGenreBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,8 +29,6 @@ class MoviesOfGenreFragment : BaseFragment<MoviesOfGenreViewModel, FragmentMovie
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        requireActivity().updateStatusBarColor(R.color.primaryColor, false)
 
         viewDataBinding.apply {
             setVariable(BR.viewModel, mViewModel)

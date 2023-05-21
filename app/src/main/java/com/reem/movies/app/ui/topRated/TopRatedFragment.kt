@@ -10,7 +10,6 @@ import com.reem.movies.app.base.baseUi.BaseFragment
 import com.reem.movies.app.binding.genericadapter.Listable
 import com.reem.movies.app.binding.genericadapter.adapter.GeneralListAdapter
 import com.reem.movies.app.binding.genericadapter.listener.OnItemClickCallback
-import com.reem.movies.app.extensions.updateStatusBarColor
 import com.reem.movies.app.ui.topRated.entity.TopRatedUiItem
 import com.reem.movies.databinding.FragmentTopRatedBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -27,7 +26,7 @@ class TopRatedFragment : BaseFragment<TopRatedViewModel, FragmentTopRatedBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().updateStatusBarColor(R.color.grey_E3E2E5)
+
         viewDataBinding.apply {
             setVariable(BR.viewModel, mViewModel)
 
